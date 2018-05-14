@@ -33,3 +33,13 @@ tagger = Mecab()
 tagger.nouns("고양이가 냐 하고 울면 나는 녜 하고 울어야지")
 > ['고양이', '나', '녜']
 ```
+
+# Open-source
+
+peunjeon에서는 다음과 같은 오픈소스를 이용하였습니다.  
+peunjeon used following open source projects.
+
+* [은전한닢 프로젝트](http://eunjeon.blogspot.kr/)  
+* [KoNLPy](http://konlpy.org) by Lucy Park  
+* [mecab](https://github.com/taku910/mecab) by taku910  
+* [mecab-python-windows](https://github.com/ikegami-yukino/mecab/releases) by ikegami-yukino  
