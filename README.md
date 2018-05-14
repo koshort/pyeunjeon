@@ -1,8 +1,10 @@
 # peunjeon (python + eunjeon)
-peunjeon은 [은전한닢 프로젝트](http://eunjeon.blogspot.kr/)와 mecab 기반의 한국어 형태소 분석기의 독립형 python 인터페이스입니다.
+
+peunjeon은 [은전한닢 프로젝트](http://eunjeon.blogspot.kr/)와 mecab 기반의 한국어 형태소 분석기의 독립형 python 인터페이스입니다.  
 peunjeon is a stand-alone python interface for morphological analyzer mecab and [project eunjeon](http://eunjeon.blogspot.kr/).
 
 # Installation 설치
+
 ## Linux or Mac
 
 ```bash
