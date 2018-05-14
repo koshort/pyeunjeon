@@ -1,7 +1,7 @@
-# peunjeon (python + eunjeon)
+# pyeunjeon (python + eunjeon)
 
-peunjeon은 [은전한닢 프로젝트](http://eunjeon.blogspot.kr/)와 mecab 기반의 한국어 형태소 분석기의 독립형 python 인터페이스입니다.  
-peunjeon is a stand-alone python interface for morphological analyzer mecab and [project eunjeon](http://eunjeon.blogspot.kr/).
+pyeunjeon은 [은전한닢 프로젝트](http://eunjeon.blogspot.kr/)와 mecab 기반의 한국어 형태소 분석기의 독립형 python 인터페이스입니다.  
+pyeunjeon is a stand-alone python interface for morphological analyzer mecab and [project eunjeon](http://eunjeon.blogspot.kr/).
 
 # Installation 설치
 
@@ -36,8 +36,8 @@ tagger.nouns("고양이가 냐 하고 울면 나는 녜 하고 울어야지")
 
 # Open-source
 
-peunjeon에서는 다음과 같은 오픈소스를 이용하였습니다.  
-peunjeon used following open source projects.
+pyeunjeon에서는 다음과 같은 오픈소스를 이용하였습니다.  
+pyeunjeon used following open source projects.
 
 * [은전한닢 프로젝트](http://eunjeon.blogspot.kr/)  
 * [KoNLPy](http://konlpy.org) by Lucy Park  
