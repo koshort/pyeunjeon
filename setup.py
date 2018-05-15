@@ -51,10 +51,10 @@ if system == "Windows":
         data_files = [(distutils.sysconfig.get_python_lib(), ['C:\\Program Files (x86)\\MeCab\\bin\\libmecab.dll'])]
 
 else:
-    if sys.version > '3':
-        def cmd1(strings):
-            return os.popen(strings).readlines()[0][:-1]
+    def cmd1(strings):
+        return os.popen(strings).readlines()[0][:-1]
 
+    if sys.version > '3':
         def cmd2(strings):
             return cmd1(strings).split()
     else:
