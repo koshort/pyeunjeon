@@ -12,6 +12,7 @@ Please register mecab directory to path using following command:
 >set PATH=%PATH%;C:\\Program Files\\MeCab\\bin
 # 32-bit
 >set PATH=%PATH%;C:\\Program Files (x86)\\MeCab\\bin
+WARNING: Those commands will only remain in current session.
 '''
 
 if _swig_python_version_info >= (2, 7, 0):
