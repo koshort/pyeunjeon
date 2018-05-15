@@ -47,7 +47,7 @@ class Mecab(object):
     .. code-block:: python
         :emphasize-lines: 1
         >>> # MeCab installation needed
-        >>> from koshort.tag import Mecab
+        >>> from eunjeon import Mecab
         >>> mecab = Mecab()
         >>> print(mecab.morphs(u'영등포구청역에 있는 맛집 좀 알려주세요.'))
         ['영등포구', '청역', '에', '있', '는', '맛집', '좀', '알려', '주', '세요', '.']
@@ -103,4 +103,4 @@ class Mecab(object):
             except RuntimeError:
                 raise Exception('The MeCab dictionary does not exist at "%s". Is the dictionary correctly installed?\nYou can also try entering the dictionary path when initializing the Mecab class: "Mecab(\'/some/dic/path\')"' % dicpath)
         except NameError:
-            raise Exception('Install MeCab in order to use it: http://konlpy.org/en/latest/install/')
+            raise Exception('Install MeCab in order to use it: https://github.com/koshort/pyeunjeon/')
