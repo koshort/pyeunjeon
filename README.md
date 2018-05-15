@@ -21,6 +21,16 @@ Install mecab first.
 mecab을 먼저 설치해주세요.  
 [mecab installer by ikegami-yukino](https://github.com/koshort/peunjeon/releases/download/0.996/mecab-0.996-64.exe)
 
+### PATH 설정
+
+64-bit 운영체제의 경우
+* PATH에 C:\Program Files\MeCab\bin 추가
+
+32-bit 운영체제의 경우
+* PATH에 C:\Program Files(x86)\MeCab\bin 추가
+
+### 설치
+
 ```bash
 pip install eunjeon
 ```
