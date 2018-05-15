@@ -3,8 +3,17 @@
 #
 # Do not make changes to this file unless you know what you are doing--modify
 # the SWIG interface file instead.
-
+import platform
 from sys import version_info as _swig_python_version_info
+
+instruction = '''ImportError has occured.
+Please register mecab directory to path using following command:
+# 64-bit
+>set PATH=%PATH%;C:\\Program Files\\MeCab\\bin
+# 32-bit
+>set PATH=%PATH%;C:\\Program Files (x86)\\MeCab\\bin
+'''
+
 if _swig_python_version_info >= (2, 7, 0):
     def swig_import_helper():
         import importlib
@@ -16,7 +25,9 @@ if _swig_python_version_info >= (2, 7, 0):
             try:
                 return importlib.import_module('_MeCab')
             except ImportError:
-                return importlib.import_module('_mecab')
+                if platform.system() == "Windows":
+                    raise ImportError(instruction)
+                return importlib.import_module('_MeCab')
     _MeCab = swig_import_helper()
     del swig_import_helper
 elif _swig_python_version_info >= (2, 6, 0):
