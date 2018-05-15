@@ -28,7 +28,6 @@ if _swig_python_version_info >= (2, 7, 0):
             except ImportError:
                 if platform.system() == "Windows":
                     raise ImportError(instruction)
-                return importlib.import_module('_MeCab')
     _MeCab = swig_import_helper()
     del swig_import_helper
 elif _swig_python_version_info >= (2, 6, 0):
