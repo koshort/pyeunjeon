@@ -8,7 +8,7 @@ import sys
 import os
 import platform
 
-from eunjeon import utils
+from eunjeon import installpath
 from eunjeon.constants import TAGSET
 from eunjeon.mecab import Tagger
 
@@ -93,12 +93,12 @@ class Mecab(object):
         tagged = self.pos(phrase)
         return [s for s, t in tagged if t.startswith('N')]
 
-    def __init__(self, dicpath=os.path.join(utils.installpath, 'mecab-ko-dic')):
+    def __init__(self, dicpath=os.path.join(installpath, 'data/mecab-ko-dic')):
         self.tagset = TAGSET
         try:
             self.tagger = Tagger('-d %s' % dicpath)
         except RuntimeError:
-            try:
+            try:  # Sometimes it works when we try twice.
                 self.tagger = Tagger('-d %s' % dicpath)
             except RuntimeError:
                 raise Exception('The MeCab dictionary does not exist at "%s". Is the dictionary correctly installed?\nYou can also try entering the dictionary path when initializing the Mecab class: "Mecab(\'/some/dic/path\')"' % dicpath)
