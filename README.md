@@ -17,7 +17,7 @@ bash <(curl -s https://raw.githubusercontent.com/koshort/peunjeon/master/scripts
 pip install eunjeon
 ```
 
-## Windows
+## Windows x64
 
 ```bash
 pip install eunjeon
