@@ -1,0 +1,25 @@
+language: python
+
+python:
+    - "2.6"
+    - "2.7"
+    - "3.3"
+    - "3.4"
+    - "3.5"
+    - "3.6"
+
+before_install:
+    - if [[ $TRAVIS_PYTHON_VERSION == 2* ]]; then pip install -r requirements.txt; fi
+    - if [[ $TRAVIS_PYTHON_VERSION == 3* ]]; then pip install -r requirements.txt; fi
+    - pip install coveralls
+    - pip install pytest-cov
+
+install:
+    - bash ./scripts/mecab.sh
+    - python setup.py -q install
+
+after_success:
+    - coveralls
+
+script:
+    - coverage run --source=konlpy -m py.test
