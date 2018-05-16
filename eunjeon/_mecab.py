@@ -93,7 +93,7 @@ class Mecab(object):
         tagged = self.pos(phrase)
         return [s for s, t in tagged if t.startswith('N')]
 
-    def __init__(self, dicpath=os.path.join(installpath, 'data/mecab-ko-dic')):
+    def __init__(self, dicpath=os.path.join(installpath, 'data/')):
         self.tagset = TAGSET
         try:
             self.tagger = Tagger('-d %s' % dicpath)

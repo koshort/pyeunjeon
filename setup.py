@@ -15,8 +15,11 @@ data_files = None
 extension = []
 package_data = {
     'eunjeon': [
-        'data/mecab-ko-dic/*',
         'data/*.cxx'
+        'data/*.bin'
+        'data/*.def'
+        'data/*.dic'
+        'data/dicrc'
         ]
 }
 
@@ -82,8 +85,8 @@ setup(
         'Intended Audience :: Education',
         'Intended Audience :: Information Technology',
         'Intended Audience :: Science/Research',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Topic :: Scientific/Engineering',
