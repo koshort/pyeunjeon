@@ -24,4 +24,4 @@ after_success:
     - coveralls
 
 script:
-    - coverage run --source=konlpy -m py.test
+    - coverage run --source=eunjeon -m py.test
