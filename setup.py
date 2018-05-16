@@ -4,15 +4,21 @@ import os
 import sys
 import string
 import platform
-import distutils.sysconfig
+import distutils.sysconfig as config
 from setuptools import find_packages, setup, Extension
 
 
-__version__ = '0.3.9.4'
+__version__ = '0.3.9.5'
 
 system = platform.system()
 data_files = None
 extension = []
+package_data = {
+    'eunjeon': [
+        'data/mecab-ko-dic/*',
+        'data/*.cxx'
+        ]
+}
 
 
 def requirements():
@@ -27,28 +33,18 @@ def requirements():
 
 
 if system == "Windows":
-    if sys.maxsize > 2**32:
-        extension = [
-            Extension(
-                "_MeCab",
-                ["eunjeon/MeCab_wrap.cxx",],
-                include_dirs=["C:\\Program Files\\MeCab\\sdk"],
-                library_dirs=["C:\\Program Files\\MeCab\\sdk"],
-                libraries=["libmecab"]
-            )
-        ]
-        data_files = [(distutils.sysconfig.get_python_lib(), ['C:\\Program Files\\MeCab\\bin\\libmecab.dll'])]
-    else:
-        extension = [
-            Extension(
-                "_MeCab",
-                ["eunjeon/MeCab_wrap.cxx",],
-                include_dirs=["C:\\Program Files (x86)\\MeCab\\sdk"],
-                library_dirs=["C:\\Program Files (x86)\\MeCab\\sdk"],
-                libraries=["libmecab"]
-            )
-        ]
-        data_files = [(distutils.sysconfig.get_python_lib(), ['C:\\Program Files (x86)\\MeCab\\bin\\libmecab.dll'])]
+    # Experimental stand-alone extension and data_files
+    extension = [
+        Extension(
+            "_MeCab",
+            ["eunjeon/MeCab_wrap.cxx",],
+            include_dirs=["eunjeon/data/sdk"],
+            library_dirs=["eunjeon/data/sdk"],
+            libraries=["libmecab"]
+        )
+    ]
+    package_data['eunjeon'].append('data/*')
+    package_data['eunjeon'].append('data/sdk/*')
 
 else:
     def cmd1(strings):
@@ -74,7 +70,7 @@ setup(
     name='eunjeon',
     version=__version__,
     description='Python interface for eunjeon project & mecab based morphological analyzer.',
-    url='https://github.com/koshort/peunjeon',
+    url='https://github.com/koshort/pyeunjeon',
     author='nyanye',
     author_email='iam@nyanye.com',
     keywords=['Korean', 'CJK',
@@ -105,11 +101,10 @@ setup(
     entry_points={
         'console_scripts': [],
     },
-    package_data={'eunjeon': [
-        'mecab-ko-dic/*',
-    ]},
+    package_data=package_data,
     data_files=data_files,
     license='GPL v3+',
     ext_modules=extension,
+    platforms=["Windows", "Linux", "Mac"],
     packages=find_packages(),
     install_requires=requirements())
