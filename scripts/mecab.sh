@@ -36,7 +36,5 @@ cd mecab-0.996-ko-0.9.2
 make
 make check
 sudo make install
+sudo ldconfig  # In case of error: libmecab.so.2: cannot open shared object file: No such file or directory
 
-# Trouble-shooting
-# sudo vim /etc/ld.so.conf add following:
-# /usr/local/lib
