@@ -2,6 +2,10 @@
 # -*- coding: utf-8 -*-
 # Original author: lucy park
 # Reimplemented by: nyanye 
+"""
+KoNLPy style mecab wrapper.
+"""
+
 from __future__ import absolute_import
 
 import sys
@@ -42,8 +46,6 @@ class Mecab(object):
     developed by the Graduate School of Informatics in Kyoto University,
     was modified to MeCab-ko by the `Eunjeon Project`_
     to adapt to the Korean language.
-    In order to use MeCab-ko within koshort, follow the directions in
-    :ref:`optional-installations`.
     .. code-block:: python
         :emphasize-lines: 1
         >>> # MeCab installation needed
@@ -93,13 +95,13 @@ class Mecab(object):
         tagged = self.pos(phrase)
         return [s for s, t in tagged if t.startswith('N')]
 
-    def __init__(self, dicpath=os.path.join(installpath, 'data/')):
+    def __init__(self, dicpath=os.path.abspath(os.path.join(installpath, 'data/mecabrc'))):
         self.tagset = TAGSET
         try:
-            self.tagger = Tagger('-d %s' % dicpath)
+            self.tagger = Tagger('--rcfile %s' % dicpath)
         except RuntimeError:
             try:  # Sometimes it works when we try twice.
-                self.tagger = Tagger('-d %s' % dicpath)
+                self.tagger = Tagger('--rcfile %s' % dicpath)
             except RuntimeError:
                 raise Exception('The MeCab dictionary does not exist at "%s". Is the dictionary correctly installed?\nYou can also try entering the dictionary path when initializing the Mecab class: "Mecab(\'/some/dic/path\')"' % dicpath)
         except NameError:
