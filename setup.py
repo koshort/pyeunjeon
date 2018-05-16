@@ -8,7 +8,7 @@ import distutils.sysconfig as config
 from setuptools import find_packages, setup, Extension
 
 
-__version__ = '0.3.9.5'
+__version__ = '0.3.9.6'
 
 system = platform.system()
 data_files = None
