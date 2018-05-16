@@ -3,23 +3,42 @@
 #
 # Do not make changes to this file unless you know what you are doing--modify
 # the SWIG interface file instead.
-import platform
 from sys import version_info as _swig_python_version_info
+from glob import glob
 
-instruction = '''ImportError has occured.
-Please register mecab directory to path using following command:
-# 64-bit
->set PATH=%PATH%;C:\\Program Files\\MeCab\\bin
-# 32-bit
->set PATH=%PATH%;C:\\Program Files (x86)\\MeCab\\bin
-WARNING: Those commands will only remain in current session.
-'''
+import platform
+import distutils.sysconfig as config
+import shutil as sh
+import os
+
+if platform.system() == "Windows":
+    # Windows lazy installation
+    for key in ["_MeCab", "_mecab"]:
+        mecab_lib = glob("%s/%s*" % (config.get_python_lib(), key))
+        if mecab_lib:
+            mecab_lib = mecab_lib[0]
+            mecab_dir = os.path.dirname(mecab_lib)
+            try:
+                sh.copy(mecab_lib, "%s/eunjeon/data/" % mecab_dir)
+                os.remove(mecab_lib)   
+            except FileNotFoundError:
+                pass
+            break
+
+    instruction = '''ImportError has occured.
+    Please register mecab directory to path using following command:
+    # 64-bit
+    >set PATH=%PATH%;C:\\Program Files\\MeCab\\bin
+    # 32-bit
+    >set PATH=%PATH%;C:\\Program Files (x86)\\MeCab\\bin
+    WARNING: Those commands will only remain in current session.
+    '''
 
 if _swig_python_version_info >= (2, 7, 0):
     def swig_import_helper():
         import importlib
         pkg = __name__.rpartition('.')[0]
-        mname = '.'.join((pkg, '_MeCab')).lstrip('.')
+        mname = '.'.join((pkg, "data", '_MeCab')).lstrip('.')
         try:
             return importlib.import_module(mname)
         except ImportError:
@@ -38,8 +57,12 @@ elif _swig_python_version_info >= (2, 6, 0):
         try:
             fp, pathname, description = imp.find_module('_MeCab', [dirname(__file__)])
         except ImportError:
-            import _MeCab
-            return _MeCab
+            try:
+                import _MeCab
+                return _MeCab
+            except:
+                import eunjeon.data._MeCab as _MeCab
+                return _MeCab
         try:
             _mod = imp.load_module('_MeCab', fp, pathname, description)
         finally:
