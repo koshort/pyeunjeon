@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import os
 import sys
 import string
@@ -10,10 +9,10 @@ from setuptools import find_packages, setup, Extension
 
 __version__ = '0.3.9.6'
 
-system = platform.system()
-data_files = None
-extension = []
-package_data = {
+SYSTEM = platform.system()
+DATA_FILES = None
+EXTENSION = []
+PACKAGE_DATA = {
     'eunjeon': [
         'data/*.cxx'
         'data/*.bin'
@@ -25,19 +24,25 @@ package_data = {
 
 
 def requirements():
-    def _openreq(reqfile):
-        with open(os.path.join(os.path.dirname(__file__), reqfile)) as f:
-            return f.read().splitlines()
+    """get requirements
 
-    if system == "Windows":
+    Returns:
+        list: Requirements
+    """
+
+    def _openreq(reqfile):
+        with open(os.path.join(os.path.dirname(__file__), reqfile)) as req:
+            return req.read().splitlines()
+
+    if SYSTEM == "Windows":
         return _openreq('requirements-win.txt')
     else:
         return _openreq('requirements.txt')
 
 
-if system == "Windows":
+if SYSTEM == "Windows":
     # Experimental stand-alone extension and data_files
-    extension = [
+    EXTENSION = [
         Extension(
             "_MeCab",
             ["eunjeon/MeCab_wrap.cxx",],
@@ -46,8 +51,8 @@ if system == "Windows":
             libraries=["libmecab"]
         )
     ]
-    package_data['eunjeon'].append('data/*')
-    package_data['eunjeon'].append('data/sdk/*')
+    PACKAGE_DATA['eunjeon'].append('data/*')
+    PACKAGE_DATA['eunjeon'].append('data/sdk/*')
 
 else:
     def cmd1(strings):
@@ -60,7 +65,7 @@ else:
         def cmd2(strings):
             return string.split(cmd1(strings))
 
-    extension = [Extension(
+    EXTENSION = [Extension(
         "_MeCab",
         ["eunjeon/MeCab_wrap.cxx"],
         include_dirs=cmd2("mecab-config --inc-dir"),
@@ -104,10 +109,11 @@ setup(
     entry_points={
         'console_scripts': [],
     },
-    package_data=package_data,
-    data_files=data_files,
+    package_data=PACKAGE_DATA,
+    data_files=DATA_FILES,
     license='GPL v3+',
-    ext_modules=extension,
+    ext_modules=EXTENSION,
     platforms=["Windows", "Linux", "Mac"],
     packages=find_packages(),
-    install_requires=requirements())
+    install_requires=requirements()
+)
