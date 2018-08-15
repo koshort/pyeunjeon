@@ -5,6 +5,9 @@
 pyeunjeon은 [은전한닢 프로젝트](http://eunjeon.blogspot.kr/)와 mecab 기반의 한국어 형태소 분석기의 독립형 python 인터페이스입니다.  
 pyeunjeon is a stand-alone python interface for morphological analyzer mecab and [project eunjeon](http://eunjeon.blogspot.kr/).
 
+## Koshort :purple_heart: KoNLPy
+[KoNLPy와 Koshort의 통합이 진행되고 있습니다!](https://github.com/konlpy/konlpy/issues/202)
+
 # Installation 설치
 
 ## Linux or Mac
