@@ -7,7 +7,7 @@ import distutils.sysconfig as config
 from setuptools import find_packages, setup, Extension
 
 
-__version__ = '0.3.9.6'
+__version__ = '0.3.9.7'
 
 SYSTEM = platform.system()
 DATA_FILES = None
@@ -34,10 +34,7 @@ def requirements():
         with open(os.path.join(os.path.dirname(__file__), reqfile)) as req:
             return req.read().splitlines()
 
-    if SYSTEM == "Windows":
-        return _openreq('requirements-win.txt')
-    else:
-        return _openreq('requirements.txt')
+    return _openreq('requirements.txt')
 
 
 if SYSTEM == "Windows":
