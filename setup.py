@@ -7,17 +7,17 @@ import distutils.sysconfig as config
 from setuptools import find_packages, setup, Extension
 
 
-__version__ = '0.3.9.7'
+__version__ = '0.3.9.8'
 
 SYSTEM = platform.system()
 DATA_FILES = None
 EXTENSION = []
 PACKAGE_DATA = {
     'eunjeon': [
-        'data/*.cxx'
-        'data/*.bin'
-        'data/*.def'
-        'data/*.dic'
+        'data/*.cxx',
+        'data/*.bin',
+        'data/*.def',
+        'data/*.dic',
         'data/dicrc'
         ]
 }
