@@ -7,7 +7,7 @@ import distutils.sysconfig as config
 from setuptools import find_packages, setup, Extension
 
 
-__version__ = '0.3.9.8'
+__version__ = '0.3.9.9'
 
 SYSTEM = platform.system()
 DATA_FILES = None
@@ -18,7 +18,8 @@ PACKAGE_DATA = {
         'data/*.bin',
         'data/*.def',
         'data/*.dic',
-        'data/dicrc'
+        'data/dicrc',
+        'data/mecabrc',
         ]
 }
 
