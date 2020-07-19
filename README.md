@@ -14,7 +14,7 @@ pyeunjeon is a stand-alone python interface for morphological analyzer mecab and
 
 ```bash
 # Install mecab first / mecab을 먼저 설치해주세요.
-bash <(curl -s https://raw.githubusercontent.com/koshort/peunjeon/master/scripts/mecab.sh)
+bash <(curl -s https://raw.githubusercontent.com/koshort/pyeunjeon/master/scripts/mecab.sh)
 
 # Install eunjeon / eunjeon을 설치합니다.
 pip install eunjeon
